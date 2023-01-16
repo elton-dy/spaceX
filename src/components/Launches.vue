@@ -2,7 +2,14 @@
   <div class="hello">
     <h1>Launches</h1>
     <div class="wrapper">
-
+      <div class="card" style="width: 18rem;" v-for="launche in launches" :key="launche.id">
+        <img :src="launche.links.patch.small" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{launche.name}}</h5>
+          <p class="card-text">{{getDetails(launche.details)}}</p>
+          <a href="#" class="btn btn-primary">read more</a>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -17,15 +24,26 @@ export default {
   },
   data()  {
     return {
-      Launches: null,
+      launches: null,
     }
   },
   mounted() {
     axios.get('https://api.spacexdata.com/v4/launches')
         .then((response) => {
-          this.Launches = response.data
+          this.launches = response.data
         })
 
+  },
+  methods: {
+    getDetails(text){
+      if(text) {
+        if (text.length > 50 ){
+          let result = text.substring(0,50)
+          return result + '...'
+        }
+        return text + '...'
+      }
+    }
   }
 }
 </script>
