@@ -1,24 +1,16 @@
 # space-x
 
-## Project setup
+## Build application
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
+docker build -t my-space-x -f Dockerfile .
 ```
 
-### Compiles and minifies for production
+### Start application
 ```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+ docker run -p 8080:8080 my-space-x
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### link app
+```
+http://localhost/
+```
