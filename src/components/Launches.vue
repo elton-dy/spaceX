@@ -7,7 +7,7 @@
         <div class="card-body">
           <h5 class="card-title">{{launche.name}}</h5>
           <p class="card-text">{{getDetails(launche.details)}}</p>
-          <a href="#" class="btn btn-primary">read more</a>
+          <a href="#" class="btn btn-primary"><router-link :to="'/launche/' + launche.id"  style="color: white">Read more</router-link></a>
         </div>
       </div>
     </div>
@@ -16,9 +16,13 @@
 
 <script>
 import axios from 'axios'
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Launches',
+  components: {
+
+  },
   props: {
 
   },
